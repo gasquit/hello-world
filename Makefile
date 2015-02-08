@@ -1,13 +1,13 @@
 CC=g++
 CFLAGS=-c -Wall
-#SOURCES=$(wildcard *.cpp)
-SOURCES= *.cpp
+SOURCES=$(wildcard *.cpp)
+#SOURCES= *.cpp
 OBJ=$(SOURCES:.cpp=.o)
 
 EXECUTABLE1=hello1
 
-all: $(SOURCES) $(EXECUTABLE) clean
-	echo "Current sources is " $(wildcard *.cpp)
+all:  $(EXECUTABLE1) 
+	echo "Current sources is " $< 
 
 $(EXECUTABLE1):$(OBJ)
 	$(CC) $(OBJ) -o $@
@@ -15,7 +15,7 @@ $(EXECUTABLE1):$(OBJ)
 
 
 %.o:%.cpp
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 .PHONY:clean
 
